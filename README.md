@@ -54,6 +54,43 @@ ReactDOM.render(<App />, document.getElementById("app"))
 ##### multiple (Boolean)
 Does your component support multiple files?
 
+##### inputStyle (Object)
+Style to be used by <input type="file"
+
+##### resize (Object)
+Will the input be images that you want resized? (resizing keeps the current aspect ratio and fits it with in the max width and max height. If the max width and max height are larger than the image, then it enlarges the image, else it shrinks the image.
+The expected format is: 
+```javascript
+{sizeName:{maxwidth:int, maxheight:int},...} 
+```
+ex:
+```javascript
+{standard:{maxwidth:1024,maxheight:768},thumb:{maxwidth:300,maxheight:200}}
+```
+Output will now include a sizes section.
+ex:
+```javascript
+[ 
+	{
+		name: superTest.jpg,
+		type: image/jpeg,
+		size: 200kB,
+		base64: data:image/jpeg;base64,asdffoobar
+		file: {}
+		sizes: {
+			standard: {
+				size: 200kB,
+				base64: data:image/jpeg;base64,asdffoobar12345678
+			},
+			thumb: {
+				size: 100kB,
+				base64: data:image/jpeg;base64,asdffoobar
+			}
+		}
+	}
+]
+```
+
 ##### onDone (Function)
 Callback function when all files have been processed
 
